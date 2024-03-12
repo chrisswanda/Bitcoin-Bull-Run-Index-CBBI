@@ -14,7 +14,7 @@ edit your crontab to have - `0 7 * * * docker run --rm -v --name cbbi | mail -s 
 
 Then enjoy them sweet, sweet BTC returns by trying to time the market.
 
-If you find this helpful, through a brother a bone.  
+If you find this helpful, throw a brother a bone.  
 
 Lightning - ⚡️chrisswanda@stacker.news
 
