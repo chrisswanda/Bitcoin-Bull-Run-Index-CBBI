@@ -20,7 +20,7 @@ Last 7 CBBI values: 78%, 79%, 79%, 80%, 80%, 80%, 80%
 
 Then enjoy them sweet, sweet BTC returns by trying to time the market.
 
-If you find this helpful, throw a brother a bone.  
+If you find this helpful -  
 
 Lightning - ⚡️chrisswanda@stacker.news
 
