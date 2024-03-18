@@ -14,8 +14,10 @@ edit your crontab to have - `0 7 * * * docker run --rm -v --name cbbi | mail -s 
 
 When it runs it will output:
 ```
-Trend: Up
-Last 7 CBBI values: 78%, 79%, 79%, 80%, 80%, 80%, 80%
+Estimated days until the Halving: 30
+Trend: Down
+Last 7 CBBI values: 81%, 81%, 81%, 80%, 79%, 78%, 79%
+Current price of Bitcoin (in USD): $66512
 ```
 
 Then enjoy them sweet, sweet BTC returns by trying to time the market.
