@@ -8,11 +8,14 @@ def get_the_halving():
     return days_until_halving
 
 def get_bitcoin_price():
-    url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
+    url = 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1'
     response = requests.get(url)
     data = response.json()
-    bitcoin_price = data['bitcoin']['usd']
-    return bitcoin_price
+    prices = data['prices']
+    opening_price = prices[0][1]
+    current_price = prices[-1][1]
+    percentage_change = ((current_price - opening_price) / opening_price) * 100
+    return current_price, percentage_change
 
 def get_confidence_data():
     url = "https://colintalkscrypto.com/cbbi/data/latest.json"
@@ -36,13 +39,14 @@ def get_confidence_data():
         return None, None
 
 trend, confidence_values_percentage = get_confidence_data()
-price = get_bitcoin_price()
+current_price, percentage_change = get_bitcoin_price()
 halving = get_the_halving()
 
 if trend is not None and confidence_values_percentage is not None:
     print("Estimated days until the Halving:", halving)
     print("Trend:", trend)
     print("Last 7 CBBI values:", ", ".join(confidence_values_percentage))
-    print("Current price of Bitcoin (in USD): $" + str(price))
+    print("Current price of Bitcoin (in USD): $", round(current_price, 2))
+    print("Percentage change since opening:", round(percentage_change, 2), "%")
 else:
     print("Failed to fetch confidence data.")
