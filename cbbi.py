@@ -3,7 +3,7 @@ from datetime import datetime
 
 def get_the_halving():
     current_date = datetime.now()
-    halving_date = datetime(2024, 4, 18)
+    halving_date = datetime(2024, 4, 20)
     days_until_halving = (halving_date - current_date).days
     return days_until_halving
 
@@ -46,7 +46,7 @@ if trend is not None and confidence_values_percentage is not None:
     print("Estimated days until the Halving:", halving)
     print("Trend:", trend)
     print("Last 7 CBBI values:", ", ".join(confidence_values_percentage))
-    print("Current price of Bitcoin (in USD): $", round(current_price, 2))
+    print("Current price of Bitcoin: $", round(current_price, 2))
     print("Percentage change since opening:", round(percentage_change, 2), "%")
 else:
     print("Failed to fetch confidence data.")
