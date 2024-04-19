@@ -1,11 +1,11 @@
 import requests
 from datetime import datetime
 
-def get_the_halving():
-    current_date = datetime.now()
-    halving_date = datetime(2024, 4, 20)
-    days_until_halving = (halving_date - current_date).days
-    return days_until_halving
+# def get_the_halving():
+#     current_date = datetime.now()
+#     halving_date = datetime(2024, 4, 20)
+#     days_until_halving = (halving_date - current_date).days
+#     return days_until_halving
 
 def get_bitcoin_price():
     url = 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1'
@@ -40,10 +40,10 @@ def get_confidence_data():
 
 trend, confidence_values_percentage = get_confidence_data()
 current_price, percentage_change = get_bitcoin_price()
-halving = get_the_halving()
+# halving = get_the_halving()
 
 if trend is not None and confidence_values_percentage is not None:
-    print("Estimated days until the Halving:", halving)
+    # print("Estimated days until the Halving:", halving)
     print("Trend:", trend)
     print("Last 7 CBBI values:", ", ".join(confidence_values_percentage))
     print("Current price of Bitcoin: $", round(current_price, 2))
