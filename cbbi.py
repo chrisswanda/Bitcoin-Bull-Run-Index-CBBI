@@ -1,12 +1,6 @@
 import requests
 from datetime import datetime
 
-# def get_the_halving():
-#     current_date = datetime.now()
-#     halving_date = datetime(2024, 4, 20)
-#     days_until_halving = (halving_date - current_date).days
-#     return days_until_halving
-
 def get_bitcoin_price():
     url = 'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=1'
     response = requests.get(url)
@@ -28,25 +22,23 @@ def get_confidence_data():
             confidence_data = data.get("Confidence", {})
             confidence_keys = list(confidence_data.keys())[-7:]
             confidence_values = [confidence_data[key] for key in confidence_keys]
-            trend = "Up" if confidence_values[-1] > confidence_values[0] else "Down"
             confidence_values_percentage = [f"{round(value * 100)}%" for value in confidence_values]
-            return trend, confidence_values_percentage
+            return confidence_values_percentage
         else:
             print("Failed to fetch data. Status code:", response.status_code)
-            return None, None
+            return None
     except Exception as e:
         print("An error occurred:", e)
-        return None, None
+        return None
 
-trend, confidence_values_percentage = get_confidence_data()
+confidence_values_percentage = get_confidence_data()
 current_price, percentage_change = get_bitcoin_price()
-# halving = get_the_halving()
 
-if trend is not None and confidence_values_percentage is not None:
-    # print("Estimated days until the Halving:", halving)
-    print("Trend:", trend)
+if confidence_values_percentage is not None:
+    recommendation = "Buy" if all(float(value.replace('%', '')) < 60 for value in confidence_values_percentage) else "Hold"
     print("Last 7 CBBI values:", ", ".join(confidence_values_percentage))
     print("Current price of Bitcoin: $", round(current_price, 2))
-    print("Percentage change since opening:", round(percentage_change, 2), "%")
+    print("Percentage change since opening: {:.2f}%".format(percentage_change))
+    print("Recommendation:", recommendation)
 else:
     print("Failed to fetch confidence data.")
