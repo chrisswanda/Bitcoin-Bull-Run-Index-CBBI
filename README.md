@@ -22,9 +22,3 @@ Current price of Bitcoin (in USD): $66512
 
 Then enjoy them sweet, sweet BTC returns by trying to time the market.
 
-If you find this helpful -  
-
-Lightning - ⚡️chrisswanda@stacker.news
-
-BTC - bc1qev6n59q32uqja3nxsvjq8ap3f6p0jea0jeueq5
-
